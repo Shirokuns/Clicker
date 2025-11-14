@@ -53,3 +53,4 @@ var tmpl = template.Must(template.ParseFiles("html/game.html"))
 
 func AmélioreClick(w http.ResponseWriter, r *http.Request) {
 }
+
