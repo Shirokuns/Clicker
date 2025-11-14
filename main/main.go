@@ -32,8 +32,6 @@ func main() {
 	log.Println("Serveur lancé sur http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
-var tmpl = template.Must(template.ParseFiles("html/game.html"))
-
 func AmélioreClick(w http.ResponseWriter, r *http.Request) {
 }
 
