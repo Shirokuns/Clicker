@@ -1,12 +1,25 @@
 package click
 
 import (
-	"fmt"
-	"html/template"
-	"math"
-	"net/http"
-	"sync"
+    "math"
+    "net/http"
+    "sync"
 )
+
+type Game struct {
+	Clicks      int
+	ClickValue  int
+	UpgradeCost int // coût actuel de l'upgrade
+}
+
+var game = Game{
+    Clicks:      0,
+    ClickValue:  1,
+    UpgradeCost: 10, // coût initial
+}
+
+var mu sync.Mutex
+
 func AmélioreClick(w http.ResponseWriter, r *http.Request) {
     // 1) N'accepter que les POST (sécurité / bonne pratique pour actions modifiantes)
     if r.Method != http.MethodPost {
@@ -22,7 +35,7 @@ func AmélioreClick(w http.ResponseWriter, r *http.Request) {
     // 4) Vérifier si le joueur a assez de clics
     if game.Clicks < cost {
         // pas assez de clics : on renvoie juste la page (on pourrait ajouter un message d'erreur)
-        renderPage(w)
+        http.Redirect(w, r, "/", http.StatusSeeOther)
         return
     }
     // 5) Déduire le coût et appliquer le bonus
@@ -37,5 +50,5 @@ func AmélioreClick(w http.ResponseWriter, r *http.Request) {
     }
     game.UpgradeCost = newCost
     // 8) Rendre la page mise à jour
-    renderPage(w)
+    http.Redirect(w, r, "/", http.StatusSeeOther)
 }
