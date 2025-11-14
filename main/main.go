@@ -4,6 +4,9 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"fmt"
+    "math"
+    "sync"
 )
 
 func main() {
@@ -26,10 +29,27 @@ func main() {
 	http.HandleFunc("/rules", func(w http.ResponseWriter, r *http.Request) {
 		tmplRule.Execute(w, nil)
 	})
-
 	// Sert les fichiers statiques (CSS, images, etc.)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	log.Println("Serveur lancé sur http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+
+type Game struct {
+	Clicks      int
+	ClickValue  int
+	UpgradeCost int // coût actuel de l'upgrade
+}
+
+var game = Game{
+	Clicks:      0,
+	ClickValue:  1,
+	UpgradeCost: 10, // coût initial
+}
+
+var mu sync.Mutex
+var tmpl = template.Must(template.ParseFiles("html/game.html"))
+
+func AmélioreClick(w http.ResponseWriter, r *http.Request) {
 }
