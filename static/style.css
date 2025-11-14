@@ -8,6 +8,11 @@ body {
   background-color: rgb(66, 126, 129);
 }
 
+/* compteur */
+.counter {
+  display: flex;           /* active Flexbox */
+  align-items: left;     /* centre verticalement */
+}
 
 /************************************************************************************************/
 /************************************************************************************************/
@@ -30,8 +35,11 @@ button {
   cursor: pointer;
 }
 
-/* compteur */
-.counter {
-  display: flex;           /* active Flexbox */
-  align-items: left;     /* centre verticalement */
+buttonUpgrade {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
 }
+/************************************************************************************************/
+/************************************************************************************************/
