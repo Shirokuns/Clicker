@@ -1,20 +1,54 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-    <meta charset="utf-8"/>
-    <link rel="stylesheet" href="/static/style.css">
-    <title>Clicker</title>
-    </head>
-    <body class="back">
-      <p>Compteur : <span id="counter">0</span></p>
-<button id="clickBtn">Clic !</button>
-<script>
-let counter = 0;
-const counterEl = document.getElementById('counter');
-document.getElementById('clickBtn').addEventListener('click', () => {
-    counter++;
-    counterEl.textContent = counter;
-});
-</script>
-    </body>
-  </html>   
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Clicker</title>
+</head>
+<body class="back">
+
+  <p>Compteur : <span id="counter">0</span></p>
+  <p>Valeur par clic : <span id="clickValue">1</span></p>
+  <p>Coût upgrade : <span id="upgradeCost">10</span></p>
+
+  <button id="clickBtn">Clic !</button>
+  <button id="upgradeBtn">Améliorer le clic</button>
+
+  <script>
+    async function refresh() {
+      const r = await fetch("/count");
+      const g = await r.json();
+
+      document.getElementById("counter").textContent = g.clicks;
+      document.getElementById("clickValue").textContent = g.click_value;
+      document.getElementById("upgradeCost").textContent = g.upgrade_cost;
+    }
+
+    document.getElementById("clickBtn").addEventListener("click", async () => {
+      const r = await fetch("/click", { method: "POST" });
+      const g = await r.json();
+
+      document.getElementById("counter").textContent = g.clicks;
+      document.getElementById("clickValue").textContent = g.click_value;
+      document.getElementById("upgradeCost").textContent = g.upgrade_cost;
+    });
+
+    document.getElementById("upgradeBtn").addEventListener("click", async () => {
+      const r = await fetch("/upgrade", { method: "POST" });
+      const g = await r.json();
+      
+      if (g.error) {
+        alert(g.error);
+        return;
+      }
+
+      document.getElementById("counter").textContent = g.clicks;
+      document.getElementById("clickValue").textContent = g.click_value;
+      document.getElementById("upgradeCost").textContent = g.upgrade_cost;
+    });
+
+    refresh();
+  </script>
+
+</body>
+</html>
