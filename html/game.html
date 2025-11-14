@@ -1,54 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-  <meta charset="utf-8"/>
-  <link rel="stylesheet" href="/static/style.css">
-  <title>Clicker</title>
+    <meta charset="UTF-8">
+    <title>Clicker - Jeu</title>
+    /static/style.css
 </head>
-<body class="back">
+<body>
+    <h1>Clicker</h1>
+    <p>Compteur : {{.Clicks}}</p>
+    <p>Valeur par clic : {{.ClickValue}}</p>
+    <p>Coût upgrade : {{.UpgradeCost}}</p>
 
-  <p>Compteur : <span id="counter">0</span></p>
-  <p>Valeur par clic : <span id="clickValue">1</span></p>
-  <p>Coût upgrade : <span id="upgradeCost">10</span></p>
+    <form action="/click" method="post">
+        <button type="submit">Clic !</button>
+    </form>
 
-  <button id="clickBtn">Clic !</button>
-  <button id="upgradeBtn">Améliorer le clic</button>
+    <form action="/upgrade" method="post">
+        <button type="submit">Améliorer le clic</button>
+    </form>
 
-  <script>
-    async function refresh() {
-      const r = await fetch("/count");
-      const g = await r.json();
-
-      document.getElementById("counter").textContent = g.clicks;
-      document.getElementById("clickValue").textContent = g.click_value;
-      document.getElementById("upgradeCost").textContent = g.upgrade_cost;
-    }
-
-    document.getElementById("clickBtn").addEventListener("click", async () => {
-      const r = await fetch("/click", { method: "POST" });
-      const g = await r.json();
-
-      document.getElementById("counter").textContent = g.clicks;
-      document.getElementById("clickValue").textContent = g.click_value;
-      document.getElementById("upgradeCost").textContent = g.upgrade_cost;
-    });
-
-    document.getElementById("upgradeBtn").addEventListener("click", async () => {
-      const r = await fetch("/upgrade", { method: "POST" });
-      const g = await r.json();
-      
-      if (g.error) {
-        alert(g.error);
-        return;
-      }
-
-      document.getElementById("counter").textContent = g.clicks;
-      document.getElementById("clickValue").textContent = g.click_value;
-      document.getElementById("upgradeCost").textContent = g.upgrade_cost;
-    });
-
-    refresh();
-  </script>
-
+    <br><br>
+    /Retour à l'accueil</button>
 </body>
 </html>
