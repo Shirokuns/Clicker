@@ -7,6 +7,7 @@ import (
 
 var count int = 0
 var click int = 1
+var up int = 10
 
 // GetState renvoie l'état actuel du compteur
 func GetState(w http.ResponseWriter, r *http.Request) {
@@ -21,9 +22,10 @@ func Click(w http.ResponseWriter, r *http.Request) {
 
 // Upgrade augmente la valeur du clic
 func Upgrade(w http.ResponseWriter, r *http.Request) {
-    if count > 10 {
+    if count >= up {
     click += 1
     count -= 10
+    up += count / 2
     }else {
     http.Error(w, "Tu ne peux pas améliorer", http.StatusBadRequest)
     return
