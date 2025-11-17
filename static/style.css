@@ -33,6 +33,7 @@ button {
   font-size: 18px;
   border-radius: 8px;
   cursor: pointer;
+ 
 }
 
 buttonUpgrade {
@@ -43,3 +44,20 @@ buttonUpgrade {
 }
 /************************************************************************************************/
 /************************************************************************************************/
+
+  align-items: center;
+} 
+
+/* compteur */
+.counter {
+  display: flex;           /* active Flexbox */
+  align-items: center;     /* centre verticalement */
+}
+
+/* .page-footer {
+  background-color: rgb(75 70 74);
+  color: white;
+  padding: 20px;
+} */
+
+
