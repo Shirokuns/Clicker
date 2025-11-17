@@ -5,7 +5,7 @@ body {
   align-items: center;     /* centre verticalement */
   height: 100vh;           /* prend toute la hauteur de la fenêtre */
   margin: 0;               /* enlève les marges par défaut */
-  background-color: rgb(66, 126, 129);
+  background-color: rgb(66, 126, 129); 
 }
 
 
@@ -23,15 +23,22 @@ body {
 /************************************************************************************************/
 
 /* bouton homepage */
-button {
-  padding: 15px 30px;
+.button {
+  padding: 15px 30px; 
   font-size: 18px;
   border-radius: 8px;
   cursor: pointer;
-}
+  align-items: center
+} 
 
 /* compteur */
 .counter {
   display: flex;           /* active Flexbox */
-  align-items: left;     /* centre verticalement */
+  align-items: center;     /* centre verticalement */
+}
+
+.page-footer {
+  background-color: rgb(75 70 74);
+  color: white;
+  padding: 20px;
 }
