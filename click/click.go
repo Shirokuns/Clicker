@@ -21,8 +21,13 @@ func Click(w http.ResponseWriter, r *http.Request) {
 
 // Upgrade augmente la valeur du clic
 func Upgrade(w http.ResponseWriter, r *http.Request) {
+    if count > 10 {
     click += 1
     count -= 10
+    }else {
+    http.Error(w, "Tu ne peux pas améliorer", http.StatusBadRequest)
+    return
+    }
     json.NewEncoder(w).Encode(map[string]int{"count": count})
 }
 
