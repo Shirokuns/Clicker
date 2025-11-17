@@ -24,8 +24,8 @@ func Click(w http.ResponseWriter, r *http.Request) {
 func Upgrade(w http.ResponseWriter, r *http.Request) {
     if count >= up {
     click += 1
-    count -= 10
-    up += count / 2
+    count -= up
+    up += 10
     }else {
     http.Error(w, "Tu ne peux pas améliorer", http.StatusBadRequest)
     return
