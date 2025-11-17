@@ -1,20 +1,26 @@
-  <!DOCTYPE html>
-  <html>
-    <head>
-    <meta charset="utf-8"/>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Clicker - Jeu</title>
     <link rel="stylesheet" href="/static/style.css">
-    <title>Clicker</title>
-    </head>
-    <body class="back">
-      <p>Compteur : <span id="counter">0</span></p>
-<button id="clickBtn">Clic !</button>
-<script>
-let counter = 0;
-const counterEl = document.getElementById('counter');
-document.getElementById('clickBtn').addEventListener('click', () => {
-    counter++;
-    counterEl.textContent = counter;
-});
-</script>
-    </body>
-  </html>   
+</head>
+</head>
+<body>
+    <h1>Clicker</h1>
+    <p>Compteur : {{.Clicks}}</p>
+    <p>Valeur par clic : {{.ClickValue}}</p>
+    <p>Coût upgrade : {{.UpgradeCost}}</p>
+
+    <form action="/click" method="post">
+        <button type="submit">Clic !</button>
+    </form>
+
+    <form action="/upgrade" method="post">
+        <button type="submit">Améliorer le clic</button>
+    </form>
+
+    <br><br>
+    /Retour à l'accueil</button>
+</body>
+</html>

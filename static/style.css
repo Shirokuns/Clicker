@@ -8,6 +8,11 @@ body {
   background-color: rgb(66, 126, 129); 
 }
 
+/* compteur */
+.counter {
+  display: flex;           
+  align-items: center;     /* centre verticalement */
+}
 
 /************************************************************************************************/
 /************************************************************************************************/
@@ -28,17 +33,25 @@ body {
   font-size: 18px;
   border-radius: 8px;
   cursor: pointer;
-  align-items: center
-} 
-
-/* compteur */
-.counter {
-  display: flex;           /* active Flexbox */
-  align-items: center;     /* centre verticalement */
+  display: flex;           /* permet de centrer le contenu */
+  align-items: center;
+  justify-content: center;
 }
 
+/* bouton upgrade */
+.buttonUpgrade {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* footer */
 .page-footer {
-  background-color: rgb(75 70 74);
+  background-color: rgb(75, 70, 74);
   color: white;
   padding: 20px;
 }

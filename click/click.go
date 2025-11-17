@@ -1,0 +1,30 @@
+package click
+
+import (
+    "net/http"
+    "encoding/json"
+)
+
+var count int = 0
+
+// GetState renvoie l'état actuel du compteur
+func GetState(w http.ResponseWriter, r *http.Request) {
+    json.NewEncoder(w).Encode(map[string]int{"count": count})
+}
+
+// Click incrémente le compteur
+func Click(w http.ResponseWriter, r *http.Request) {
+    count++
+    json.NewEncoder(w).Encode(map[string]int{"count": count})
+}
+
+// Upgrade (exemple simple)
+func Upgrade(w http.ResponseWriter, r *http.Request) {
+    count += 10
+    json.NewEncoder(w).Encode(map[string]int{"count": count})
+}
+
+// GetGame renvoie l'état du jeu (exemple)
+func GetGame() map[string]int {
+    return map[string]int{"count": count}
+}
