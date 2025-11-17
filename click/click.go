@@ -19,7 +19,7 @@ func Click(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(map[string]int{"count": count})
 }
 
-// Upgrade (exemple simple)
+// Upgrade augmente la valeur du clic
 func Upgrade(w http.ResponseWriter, r *http.Request) {
     click += 1
     count -= 10
