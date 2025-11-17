@@ -13,13 +13,11 @@ var up float64 = 10
 func GetState(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(map[string]float64{"count": count})
 }
-
 // Click incrémente le compteur
 func Click(w http.ResponseWriter, r *http.Request) {
     count += click
     json.NewEncoder(w).Encode(map[string]float64{"count": count})
 }
-
 // Upgrade augmente la valeur du clic
 func Upgrade(w http.ResponseWriter, r *http.Request) {
     if count >= up {
@@ -32,7 +30,6 @@ func Upgrade(w http.ResponseWriter, r *http.Request) {
     }
     json.NewEncoder(w).Encode(map[string]float64{"count": count})
 }
-
 // GetGame renvoie l'état du jeu (exemple)
 func GetGame() map[string]float64 {
     return map[string]float64{"count": count}
