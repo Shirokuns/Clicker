@@ -6,6 +6,7 @@ import (
 )
 
 var count int = 0
+var click int = 1
 
 // GetState renvoie l'état actuel du compteur
 func GetState(w http.ResponseWriter, r *http.Request) {
@@ -14,13 +15,14 @@ func GetState(w http.ResponseWriter, r *http.Request) {
 
 // Click incrémente le compteur
 func Click(w http.ResponseWriter, r *http.Request) {
-    count++
+    count += click
     json.NewEncoder(w).Encode(map[string]int{"count": count})
 }
 
 // Upgrade (exemple simple)
 func Upgrade(w http.ResponseWriter, r *http.Request) {
-    count += 10
+    click += 1
+    count -= 10
     json.NewEncoder(w).Encode(map[string]int{"count": count})
 }
 
