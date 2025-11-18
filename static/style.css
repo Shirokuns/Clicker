@@ -6,7 +6,7 @@ body {
   align-items:center ;     /* centre verticalement */
   height: 100vh;           /* prend toute la hauteur de la fenêtre */
   margin: 0;               /* enlève les marges par défaut */
-  background-color: rgb(66, 126, 129); 
+  background-color: rgb(53, 109, 112); 
 }
 
 /* compteur */
